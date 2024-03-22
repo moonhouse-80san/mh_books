@@ -186,9 +186,6 @@
 <load target="css/board.css" />
 <load cond="$mi->colorset=='black'" target="css/black.css" />
 
-<!--// 커스텀 파일 넣기 -->
-<include cond="file_exists(_XE_PATH_.'modules/board/skins/sketchbook5/custom/custom.php')" target="custom/custom.php" />
-
 <style data-id="bdCss">
 .color_scheme_dark * { color:var(--color-black) !important; background-color:var(--color-white) !important;}
 <!--@if($mi->font)-->
