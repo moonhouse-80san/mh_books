@@ -1,0 +1,16 @@
+<include target="__setting.html" />
+
+<!--// 상단 html 출력 -->
+
+
+<div id="bd" class="bd">
+	<!--// 게시판상단에 풀립 판넬 -->
+	<div cond="!$mi-> top_panel=='' && !$document_srl">
+		<load target="js/panel.js" />
+		<style type="text/css">
+		.panel,.flip { background-color:{$mi->top_panel_bcolor}; }
+		.flip { <!--@if($li->Menu_Position=='Y')-->margin-top:-35px;<!--@else-->margin:10px 0;<!--@end--> }
+		.panel { <!--@if($mi->panel_auto=='')-->display:none<!--@end--> }
+		</style>
+		<div class="panel">{$mi->top_panel_text}</div>
+	</div>
