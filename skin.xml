@@ -1,0 +1,879 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skin version="0.2">
+	<title xml:lang="ko">MH 거래장</title>
+	<description xml:lang="ko">MH 거래장 Skin, 모바일까지 대응</description>
+	<version>1.1</version>
+	<date>2022-03-13</date>
+	<author email_address="mbg1346@naver.com" link="https://moonhouse.co.kr/">
+		<name xml:lang="ko">MH Books</name>
+	</author>
+	<colorset>
+		<color name="white">
+			<title xml:lang="ko">하얀색</title>
+		</color>
+		<color name="black">
+			<title xml:lang="ko">검은색</title>
+		</color>
+	</colorset>
+	<extra_vars>
+		<group>
+		<title xml:lang="ko">거래장형</title>
+			<var name="write_top" type="radio">
+				<title xml:lang="ko">게시판상단 중앙 쓰기 버튼</title>
+				<description xml:lang="ko">관리자만 적용.</description>
+				<options value="">
+					<title xml:lang="ko">표시 안함(기본)</title>
+				</options>
+				<options value="Y">
+					<title xml:lang="ko">표시</title>
+				</options>
+			</var>
+			<var name="normal_lst_tdW" type="text">
+				<title xml:lang="ko">분류, 닉네임 영역 넓이 제한</title>
+				<description xml:lang="ko">분류, 닉네임 영역이 길어지는 경우 제목 영역이 너무 좁아지는 것을 막기 위해 최대 넓이를 제한합니다. 입력하지 않으면 '90'(px)입니다.</description>
+			</var>
+			<var name="title_area" type="text">
+				<title xml:lang="ko">제목칸 이름 변경</title>
+				<description xml:lang="ko">목록에서 제목칸의 이름을 변경합니다.(기본 제목)</description>
+			</var>
+			<var name="direct_used" type="radio">
+				<title xml:lang="ko">Url 바로가기 출력</title>
+				<description xml:lang="ko">확장변수에 url 생성시 리스트에 바로가기 출력</description>
+				<options value="">
+					<title xml:lang="ko">표시 안함(기본)</title>
+				</options>
+				<options value="Y">
+					<title xml:lang="ko">표시</title>
+				</options>
+			</var>
+			<var name="extra_val_no" type="text">
+				<title xml:lang="ko">　┖ Url 바로가기 확장변수 번호</title>
+			</var>
+			<var name="list_mb" type="radio">
+				<title xml:lang="ko">모바일 거래장 형식</title>
+				<description xml:lang="ko">모바일에서 리스트형식을 가로 사이즈로 출력</description>
+				<options value="">
+					<title xml:lang="ko">사용안함(기본)</title>
+				</options>
+				<options value="Y">
+					<title xml:lang="ko">사용</title>
+				</options>
+			</var>
+			<var name="guest_view" type="radio">
+				<title xml:lang="ko">★모바일 확장변수 사용</title>
+				<description xml:lang="ko">모바일에서 리스터에 확장변수를 사용</description>
+				<options value="">
+					<title xml:lang="ko">사용(기본)</title>
+				</options>
+				<options value="N">
+					<title xml:lang="ko">사용안함</title>
+				</options>
+			</var>
+			<var name="extra_val_mno" type="text">
+				<title xml:lang="ko">　┖ 모바일 리스트 상단 출력 확장변수 번호</title>
+			</var>
+			<var name="extra_val_mno1" type="text">
+				<title xml:lang="ko">　┖ 모바일 리스트 하단 좌측 출력 확장변수 번호</title>
+			</var>
+			<var name="extra_val_mtno" type="text">
+				<title xml:lang="ko">　┖ 모바일 리스트 하단 우측 전화걸기 확장변수 번호</title>
+			</var>
+			<var name="m_editor" type="radio" default="3">
+				<title xml:lang="ko">모바일 에디터</title>
+				<description xml:lang="ko">모바일 에디터를 선택합니다.</description>
+				<options value="">
+					<title xml:lang="ko">HTML5 WYSIWYG</title>
+				</options>
+				<options value="2">
+					<title xml:lang="ko">Textarea</title>
+				</options>
+				<options value="3">
+					<title xml:lang="ko">웹 에디터(기본)</title>
+				</options>
+			</var>
+		</group>
+		<group>
+		<title xml:lang="ko">본문 Map 출력</title>
+			<var name="extra_map" type="radio">
+				<title xml:lang="ko">Map 출력</title>
+				<description xml:lang="ko">사용자정의 이름 shop, address 등으로 한줄입력칸으로 등록</description>
+				<options value="">
+					<title xml:lang="ko">출력 않음(기본)</title>
+				</options>
+				<options value="Y">
+					<title xml:lang="ko">출력</title>
+				</options>
+			</var>
+			<var name="kakao_key" type="text">
+				<title xml:lang="ko">*카카오톡 앱키 입력</title>
+				<description xml:lang="ko">카카오톡 링크를 사용하려면 'https://developers.kakao.com/'에서 발급한 API 앱키(Javascript 키)를 입력하셔야 합니다. 자세한 사항은 카카오 개발자 사이트를 참조하세요. 'https://developers.kakao.com/docs/js#카카오톡-링크-예제:-동적으로-바뀌는-내용의-카카오톡-링크-보내기'</description>
+			</var>
+			<var name="extra_img_title" type="text">
+				<title xml:lang="ko">이미지출력칸 제목</title>
+				<description xml:lang="ko">미기재시 이미지출력칸 출력안함 (Ex : 업종사진)</description>
+			</var>
+			<var name="shop_name_title" type="text">
+				<title xml:lang="ko">상호출력칸 제목</title>
+				<description xml:lang="ko">미기재시 상호출력칸 출력안함 (Ex : 업종명)</description>
+			</var>
+			<var name="shop_name_e" type="text">
+				<title xml:lang="ko">상호출력칸 확장변수 No</title>
+			</var>
+			<var name="getAdd" type="text">
+				<title xml:lang="ko">주소 확장변수 No</title>
+			</var>
+			<var name="getLat" type="text">
+				<title xml:lang="ko">위도 확장변수 No</title>
+			</var>
+			<var name="getLng" type="text">
+				<title xml:lang="ko">경도 확장변수 No</title>
+			</var>
+			<var name="getLevel" type="text">
+				<title xml:lang="ko">레벨 확장변수 No</title>
+			</var>
+		</group>
+		<group>
+		<title xml:lang="ko">전체 설정</title>
+			<var name="wizard" type="radio">
+				<title xml:lang="ko">위저드 사용</title>
+				<description xml:lang="ko">스킨 설정을 할 수 있는 내비게이션을 게시판 브라우저 좌측에 출력합니다.</description>
+				<options value="">
+					<title xml:lang="ko">관리자만(기본)</title>
+				</options>
+				<options value="N">
+					<title xml:lang="ko">사용 안함</title>
+				</options>
+			</var>
+			<var name="color" type="select">
+				<title xml:lang="ko">게시판 색상</title>
+				<description xml:lang="ko">컬러셋과는 별도로 게시판의 전체 '색상' 분위기를 결정하는 부분입니다. 제목, 데코레이션, 테두리 등의 색상을 결정합니다.</description>
+				<options value="333333">
+					<title xml:lang="ko">검은색(기본)</title>
+				</options>
+				<options value="87cefa">
+					<title xml:lang="ko">라이트스카이블루(파스텔-하늘)</title>
+				</options>
+				<options value="6495ed">
+					<title xml:lang="ko">콘플라워블루(연한하늘)</title>
+				</options>
+				<options value="4169e1">
+					<title xml:lang="ko">로얄블루(밝은파랑)</title>
+				</options>
+				<options value="4682b4">
+					<title xml:lang="ko">스틸블루(짙은파랑)</title>
+				</options>
+				<options value="adff2f">
+					<title xml:lang="ko">그린옐로우(파스텔-연두)</title>
+				</options>
+				<options value="80E12A">
+					<title xml:lang="ko">초록색</title>
+				</options>
+				<options value="ffb6c1">
+					<title xml:lang="ko">라이트핑크(파스텔-분홍)</title>
+				</options>
+				<options value="ff69b4">
+					<title xml:lang="ko">핫핑크(분홍)</title>
+				</options>
+				<options value="ff1493">
+					<title xml:lang="ko">딥핑크(선홍)</title>
+				</options>
+				<options value="ffd700">
+					<title xml:lang="ko">골드(노랑)</title>
+				</options>
+				<options value="ffa500">
+					<title xml:lang="ko">오렌지(주황)</title>
+				</options>
+				<options value="ff7f50">
+					<title xml:lang="ko">코랄(진한주황)</title>
+				</options>
+				<options value="ff6347">
+					<title xml:lang="ko">토마토(연한빨강)</title>
+				</options>
+				<options value="bc8f8f">
+					<title xml:lang="ko">장미빛갈색(흑백-보라)</title>
+				</options>
+				<options value="ee82ee">
+					<title xml:lang="ko">바이올렛(파스텔-보라)</title>
+				</options>
+				<options value="db7093">
+					<title xml:lang="ko">팔레바이올렛레드(연한자주)</title>
+				</options>
+				<options value="c71585">
+					<title xml:lang="ko">미디엄바이올렛레드(진한자주)</title>
+				</options>
+			</var>
+			<var name="top_panel" type="radio">
+				<title xml:lang="ko">★게시판최상단 풀립식 판넬</title>
+				<description xml:lang="ko">게시판최상단에 폴더식 판넬의 출력</description>
+				<options value="">
+					<title xml:lang="ko">사용안함(기본)</title>
+				</options>
+				<options value="N">
+					<title xml:lang="ko">사용</title>
+				</options>
+			</var>
+			<var name="panel_auto" type="radio">
+				<title xml:lang="ko">　┖ 판넬 자동 접기 / 펼치기</title>
+				<description xml:lang="ko">판넬을 처음부터 접기 / 펼치기</description>
+				<options value="">
+					<title xml:lang="ko">접기(기본)</title>
+				</options>
+				<options value="N">
+					<title xml:lang="ko">펼치기</title>
+				</options>
+			</var>
+			<var name="top_panel_btn" type="text">
+				<title xml:lang="ko">　┖ 버턴안 문구</title>
+			   <description xml:lang="ko">버턴안의 문구를 적어주세요(기본 Click)</description>
+			</var>
+			<var name="top_panel_text" type="textarea">
+				<title xml:lang="ko">　┖ 판넬안에 들어갈 내용</title>
+			   <description xml:lang="ko">판넬안에 들어갈 문구나 이미지, 위젯을 넣어시면 됩니다.(Html지원됨)</description>
+			</var>
+			<var name="top_panel_bcolor" type="text">
+				<title xml:lang="ko">　┖ 배경색상</title>
+			   <description xml:lang="ko">배경색상을 지정.(기본 투명 ex:#ffffff)</description>
+			</var>
+			<var name="top_panel_color" type="text">
+				<title xml:lang="ko">　┖ 글색상</title>
+			   <description xml:lang="ko">글색상을 지정.(기본 #444)</description>
+			</var>
+			<var name="title" type="text">
+				<title xml:lang="ko">게시판 제목</title>
+			</var>
+			<var name="sub_title" type="text">
+				<title xml:lang="ko">게시판 부제목</title>
+			</var>
+			<var name="top_image" type="image">
+                <title xml:lang="ko">★게시판최상단 이미지삽입</title>
+                <description xml:lang="ko">게시판최상단에 이미지를 삽입할 수 있습니다.</description>
+            </var>
+			<var name="top_image_align" type="select">
+                <title xml:lang="ko">　┖ 게시판최상단 이미지삽입 위치</title>
+				<options value="left">
+					<title xml:lang="ko">좌측(기본)</title>
+				</options>
+				<options value="center">
+					<title xml:lang="ko">중간</title>
+				</options>
+				<options value="right">
+					<title xml:lang="ko">우측</title>
+				</options>
+                <description xml:lang="ko">게시판최상단 이미지의 위치를 지정합니다.</description>
+            </var>
+			<var name="title_img" type="image">
+				<title xml:lang="ko">게시판 제목에 이미지 사용</title>
+				<description xml:lang="ko">게시판 제목을 이 항목에 등록한 이미지로 사용할 수 있습니다.</description>
+			</var>
+			<var name="write_buten" type="text">
+				<title xml:lang="ko">쓰기버턴이름교체</title>
+				<title xml:lang="en">Change Of WriteButon</title>
+			   <description xml:lang="ko">게시판 쓰기버턴의 이름을 원하는 문구로 대치합니다.</description>
+			   <description xml:lang="en">Change Of WriteButon</description>
+			</var>
+		</group>
+		<group>
+		<title xml:lang="ko">게시판 상하단 설정</title>
+			<var name="cnb" type="radio">
+				<title xml:lang="ko">카테고리 메뉴 스타일</title>
+				<description xml:lang="ko">'표시 안함' 게시판 설정의 '게시판 정보' 메뉴의 '분류 사용' 항목과 관계없이 표시하지 않습니다. '박스 스타일'은 2차 카테고리를 지원하지 않습니다.</description>
+				<options value="">
+					<title xml:lang="ko">그라데이션 스타일(기본)</title>
+				</options>
+				<options value="cTab">
+					<title xml:lang="ko">탭 스타일</title>
+				</options>
+				<options value="cnb3">
+					<title xml:lang="ko">박스 스타일</title>
+				</options>
+				<options value="cnb4">
+					<title xml:lang="ko">박스+테두리 스타일</title>
+				</options>
+				<options value="N">
+					<title xml:lang="ko">표시 안함</title>
+				</options>
+			</var>
+			<var name="cnb_count" type="radio">
+				<title xml:lang="ko">카테고리 게시물 수 표시</title>
+				<description xml:lang="ko">카테고리의 각 메뉴 이름 옆에 게시물 수를 표시합니다.</description>
+				<options value="Y">
+					<title xml:lang="ko">표시</title>
+				</options>
+				<options value="">
+					<title xml:lang="ko">표시 안함(기본)</title>
+				</options>
+			</var>
+			<var name="srch_btm" type="radio">
+				<title xml:lang="ko">하단 검색창</title>
+				<options value="">
+					<title xml:lang="ko">클릭 시 표시(기본)</title>
+				</options>
+				<options value="2">
+					<title xml:lang="ko">처음부터 표시</title>
+				</options>
+				<options value="N">
+					<title xml:lang="ko">표시 안함</title>
+				</options>
+			</var>
+			<var name="write_btm_btn" type="radio">
+				<title xml:lang="ko">쓰기 버튼</title>
+				<options value="">
+					<title xml:lang="ko">표시(기본)</title>
+				</options>
+				<options value="2">
+					<title xml:lang="ko">권한자에게만</title>
+				</options>
+				<options value="N">
+					<title xml:lang="ko">표시 안함</title>
+				</options>
+			</var>
+			<var name="btm_mn" type="checkbox">
+				<title xml:lang="ko">버튼 추가</title>
+				<options value="home">
+					<title xml:lang="ko">목록 버튼 표시</title>
+				</options>
+				<options value="tag">
+					<title xml:lang="ko">TAG 버튼 표시</title>
+				</options>
+			</var>
+			<var name="page_navi_view" type="radio">
+                <title xml:lang="ko">페이지 출력 뷰</title>
+				<options value="">
+					<title xml:lang="ko">페이지 출력 표시</title>
+				</options>
+				<options value="N">
+					<title xml:lang="ko">페이지 출력하지 않음</title>
+				</options>
+                <description xml:lang="ko">게시판하단 페이지 네비게이션 출력을 선택합니다.</description>
+            </var>
+		</group>
+
+		<group>
+		<title xml:lang="ko">목록 공통 설정</title>
+			<var name="rd_lst" type="radio">
+				<title xml:lang="ko">본문에서 목록 출력</title>
+				<description xml:lang="ko">본문을 볼 때 본문 하단에 목록을 출력할 것인지를 결정합니다.</description>
+				<options value="">
+					<title xml:lang="ko">출력(기본)</title>
+				</options>
+				<options value="N">
+					<title xml:lang="ko">출력 안함</title>
+				</options>
+			</var>
+			<var name="notice_style" type="radio" default="2">
+				<title xml:lang="ko">공지 출력 형식</title>
+				<description xml:lang="ko">공지의 출력형식을 결정합니다. 모든 목록형태에서 동일한 공지의 출력이 필요한 경우 사용됩니다.</description>
+				<options value="">
+					<title xml:lang="ko">선택된 목록 유형과 같은 방식(기본)</title>
+				</options>
+				<options value="2">
+					<title xml:lang="ko">모든 목록 유형에서 동일한 한 줄 공지 형식</title>
+				</options>
+			</var>
+			<var name="subject_cut_size" type="text">
+				<title xml:lang="ko">제목 글자 수</title>
+				<description xml:lang="ko">입력하지 않으면 기본 설정은 설정은 자르지 않습니다. *갤러리형은 별도 항목이 존재합니다.</description>
+			</var>
+			<var name="content_cut_size" type="text">
+				<title xml:lang="ko">내용 글자 수</title>
+				<description xml:lang="ko">입력하지 않으면 기본 설정은 240 입니다.</description>
+			</var>
+			<var name="duration_new" type="text" default="12">
+				<title xml:lang="ko">새 글 표시 시간</title>
+				<description xml:lang="ko">입력하지 않으면 기본 설정은 24 입니다.</description>
+			</var>
+			<var name="hd_tx" type="radio">
+				<title xml:lang="ko">'상단 내용' 출력 방식</title>
+				<description xml:lang="ko">게시판 제목이나 공지 등에 활용되는 게시판 설정의 '게시판 정보'  항목의 '상단 내용'을 본문 출력 방식을 설정합니다.</description>
+				<options value="">
+					<title xml:lang="ko">항상 출력(기본)</title>
+				</options>
+				<options value="2">
+					<title xml:lang="ko">본문에서만 출력</title>
+				</options>
+				<options value="3">
+					<title xml:lang="ko">본문에서 출력 안함</title>
+				</options>
+			</var>
+			<var name="fdb_count" type="radio">
+				<title xml:lang="ko">댓글수 스타일</title>
+				<description xml:lang="ko">'목록형', '갤러리형'에서 댓글수의 디자인을 결정합니다. 박스형(강조형)은 댓글 수를 강조할 때 유용합니다.</description>
+				<options value="">
+					<title xml:lang="ko">텍스트형(기본)</title>
+				</options>
+				<options value="fdb_count">
+					<title xml:lang="ko">박스형(강조형) - 좌측 정렬</title>
+				</options>
+				<options value="fdb_count fdb_count2">
+					<title xml:lang="ko">박스형(강조형) - 우측 정렬</title>
+				</options>
+			</var>
+			<var name="Extraimg_View" type="radio">
+				<title xml:lang="ko">게시판 목록 아이콘들 출력</title>
+				<description xml:lang="ko">게시판 목록옆에 New, 파일, 이미지 아이콘들을 출력할 것인지를 결정합니다.</description>
+				<options value="">
+					<title xml:lang="ko">출력(기본)</title>
+				</options>
+				<options value="N">
+					<title xml:lang="ko">출력 안함</title>
+				</options>
+			</var>
+			<var name="file_icon" type="radio">
+				<title xml:lang="ko">　┖ 파일 아이콘 출력</title>
+				<description xml:lang="ko">게시판 파일아이콘을 출력할 것인지를 결정합니다.</description>
+				<options value="">
+					<title xml:lang="ko">출력(기본)</title>
+				</options>
+				<options value="N">
+					<title xml:lang="ko">출력 안함</title>
+				</options>
+			</var>
+			<var name="new_icon" type="radio">
+				<title xml:lang="ko">　┖ New 아이콘 출력</title>
+				<description xml:lang="ko">게시판 New아이콘을 출력할 것인지를 결정합니다.</description>
+				<options value="">
+					<title xml:lang="ko">출력(기본)</title>
+				</options>
+				<options value="N">
+					<title xml:lang="ko">출력 안함</title>
+				</options>
+			</var>
+			<var name="update_icon" type="radio">
+				<title xml:lang="ko">　┖ Update 아이콘 출력</title>
+				<description xml:lang="ko">게시판 Update아이콘을 출력할 것인지를 결정합니다.</description>
+				<options value="">
+					<title xml:lang="ko">출력(기본)</title>
+				</options>
+				<options value="N">
+					<title xml:lang="ko">출력 안함</title>
+				</options>
+			</var>
+			<var name="image_icon" type="radio">
+				<title xml:lang="ko">　┖ Image 아이콘 출력</title>
+				<description xml:lang="ko">게시판 Image아이콘을 출력할 것인지를 결정합니다.</description>
+				<options value="">
+					<title xml:lang="ko">출력(기본)</title>
+				</options>
+				<options value="N">
+					<title xml:lang="ko">출력 안함</title>
+				</options>
+			</var>
+		</group>
+		<group>
+		<title xml:lang="ko">글쓰기 및 댓글쓰기 설정</title>
+			<var name="tl_color" type="radio">
+				<title xml:lang="ko">'제목 색깔' 및 '제목 굵기' 표시</title>
+				<options value="">
+					<title xml:lang="ko">관리자만(기본)</title>
+				</options>
+				<options value="2">
+					<title xml:lang="ko">모든 사용자</title>
+				</options>
+			</var>
+			<var name="wrt_opt" type="checkbox">
+				<title xml:lang="ko">쓰기 옵션 기본값 설정</title>
+				<options value="notify">
+					<title xml:lang="ko">알림 기본 체크</title>
+				</options>
+				<options value="secret">
+					<title xml:lang="ko">비밀글 기본 체크</title>
+				</options>
+			</var>
+			<var name="display_content_writer" type="radio">
+				<title xml:lang="ko">★본문작성(Edit)기 출력</title>
+				<title xml:lang="en">Edit Display</title>
+				<title xml:lang="jp">本文作成(Edit)機出力</title>
+				<options value="">
+					<title xml:lang="ko">출력</title>
+					<title xml:lang="en">display</title>
+					<title xml:lang="jp">表示</title>
+				</options>
+				<options value="N">
+					<title xml:lang="ko">출력하지 않음</title>
+					<title xml:lang="en">not diaplay</title>
+					<title xml:lang="jp">非表示</title>
+				 </options>
+			   <description xml:lang="ko">
+				 본문작성(Edit)기의 출력여부를 선택합니다.
+				 출력하지 않을시 문서의 내용이 없이도 글이 작성됩니다.
+			   </description>
+			   <description xml:lang="jp">本文作成(Edit)機の出力可否を選択します.</description>
+			</var>
+			<var name="content_default" type="textarea">
+				<title xml:lang="ko">글 작성시 미리 입력된 글 출력</title>
+				<description xml:lang="ko">글쓰기 화면에서 글쓰기 창 안에 표시될 글을 출력하는 기능입니다. 미리 준비된 양식이나 글쓰기 안내글 등에 사용할 수 있습니다. HTML을 사용 할 수 있습니다.</description>
+			</var>
+			<var name="title_default_text" type="text">
+				<title xml:lang="ko">제목의 기본 내용</title>
+				<title xml:lang="en">Title of the basic information</title>
+				<title xml:lang="jp">題目の基本内容</title>
+				<description xml:lang="ko">문서 작성시 제목에 기본값을 입력할 수 있습니다.</description>
+				<description xml:lang="jp">文書作成の時題目に基本値を入力することができます.</description>
+			</var>
+			<var name="cmt_wrt" type="radio">
+				<title xml:lang="ko">댓글 에디터 설정</title>
+				<description xml:lang="ko">(1) Textarea : 에디터를 불러오지 않고 글을 쓸 수 있습니다. (2) 에디터  (3) SocialXE : '난다날아'님의 'SocialXE' 와 본 스킨 제작자가 배포한 'SketchBook5 SocialXE 댓글 위젯 스킨'이 모두 설치되어 있는 경우에만 작동하는 옵션입니다.(※ 반드시 이 의미가 무엇인지 아는 사용자만 설정하시길 바랍니다.)</description>
+				<options value="">
+					<title xml:lang="ko">Textarea(기본)</title>
+				</options>
+				<options value="editor">
+					<title xml:lang="ko">에디터</title>
+				</options>
+			</var>
+			<var name="select_editor" type="radio">
+				<title xml:lang="ko">에디터 선택 버튼 표시</title>
+				<description xml:lang="ko">본문의 댓글 영역에 사용자가 에디터를 선택할 수 있는 버튼을 표시합니다. 위의 '댓글 에디터 설정'에서 'SocialXE'를 선택한 경우 'SocialXE 버튼'이 표시됩니다. ※ '댓글 에디터 설정' 항목보다 사용자가 선택한 에디터가 우선합니다.</description>
+				<options value="">
+					<title xml:lang="ko">Textarea, 에디터(기본)</title>
+				</options>
+				<options value="N">
+					<title xml:lang="ko">표시 안함</title>
+				</options>
+			</var>
+		</group>
+		<group>
+		<title xml:lang="ko">첨부파일</title>
+			<var name="show_files" type="radio" default="2">
+				<title xml:lang="ko">첨부파일 표시 방법</title>
+				<options value="">
+					<title xml:lang="ko">숨기고 버튼 표시(기본)</title>
+				</options>
+				<options value="2">
+					<title xml:lang="ko">하단 표시</title>
+				</options>
+				<options value="3">
+					<title xml:lang="ko">상단(제목 밑에) 표시</title>
+				</options>
+				<options value="N">
+					<title xml:lang="ko">표시 안함</title>
+				</options>
+			</var>
+			<var name="files_type" type="radio">
+				<title xml:lang="ko">확장자 필터 기능</title>
+				<description xml:lang="ko">첨부파일에서 이미지, 동영상, 음악 파일을 제외하는 기능을 사용합니다. 아래의 옵션에서 출력할 파일 타입을 선택하세요.</description>
+				<options value="Y">
+					<title xml:lang="ko">사용</title>
+				</options>
+				<options value="">
+					<title xml:lang="ko">사용 안함(기본)</title>
+				</options>
+			</var>
+			<var name="files_img" type="radio">
+				<title xml:lang="ko">이미지 파일</title>
+				<description xml:lang="ko">첨부파일에서 이미지 파일(jpg, jpeg, gif, png)의 출력 여부를 선택합니다.</description>
+				<options value="">
+					<title xml:lang="ko">출력(기본)</title>
+				</options>
+				<options value="N">
+					<title xml:lang="ko">출력 안함</title>
+				</options>
+			</var>
+			<var name="files_video" type="radio">
+				<title xml:lang="ko">동영상 파일</title>
+				<description xml:lang="ko">첨부파일에서 동영상 파일(mpg, mpeg, avi, wmv, mp4, mov, mkv, swf, flv, ogv, webm)의 출력 여부를 선택합니다.</description>
+				<options value="">
+					<title xml:lang="ko">출력(기본)</title>
+				</options>
+				<options value="N">
+					<title xml:lang="ko">출력 안함</title>
+				</options>
+			</var>
+			<var name="files_audio" type="radio">
+				<title xml:lang="ko">음악 파일</title>
+				<description xml:lang="ko">첨부파일에서 음악 파일(mp3, ogg, wma, wav, ape, flac, mid)의 출력 여부를 선택합니다.</description>
+				<options value="">
+					<title xml:lang="ko">출력(기본)</title>
+				</options>
+				<options value="N">
+					<title xml:lang="ko">출력 안함</title>
+				</options>
+			</var>
+			<var name="files_etc" type="radio">
+				<title xml:lang="ko">기타 파일</title>
+				<description xml:lang="ko">위의 3가지 파일 타입(이미지, 비디오, 오디오)을 제외한 나머지 파일의 출력 여부를 선택합니다.</description>
+				<options value="">
+					<title xml:lang="ko">출력(기본)</title>
+				</options>
+				<options value="N">
+					<title xml:lang="ko">출력 안함</title>
+				</options>
+			</var>
+		</group>
+		<group>
+		<title xml:lang="ko">본문 일반 설정</title>
+			<var name="rd_padding" type="text">
+				<title xml:lang="ko">본문 전체 여백 설정</title>
+				<description xml:lang="ko">본문의 전체 여백(padding)을 설정합니다. 사용자의 레이아웃에 따라 본문 폭이 달라 필요한 영역 확보를 하지 못하는 경우를 위해 옵션을 두었습니다. 일반 css 입력과 동일하므로 'px', 'em', '%' 등 '단위'까지 반드시(!) 입력해야 합니다(※ '0'으로 사용할 경우 '0'은 저장되지 않으니 '0px'을 입력하세요). 입력하지 않으면 기본설정은 '0 15px' 입니다. 예) '0px', '10px', '10px 20px 30px 10px', '3% 0' 등</description>
+			</var>
+			<var name="rd_nav" type="radio">
+				<title xml:lang="ko">본문 상단 내비</title>
+				<description xml:lang="ko">본문을 읽는 데 도움을 주는 기능('글자의 확대-축소', '상단-댓글-목록으로 이동', '프린트', '첨부파일', '이 게시물을', '수정', '삭제' 등)을 모은 내비게이션입니다.</description>
+				<options value="">
+					<title xml:lang="ko">제목 영역 아래(기본)</title>
+				</options>
+				<options value="2">
+					<title xml:lang="ko">제목 영역 위</title>
+				</options>
+				<options value="N">
+					<title xml:lang="ko">표시 안함</title>
+				</options>
+			</var>
+			<var name="rd_nav_style" type="radio">
+				<title xml:lang="ko">본문 내비 스타일</title>
+				<options value="">
+					<title xml:lang="ko">테두리+박스(기본)</title>
+				</options>
+				<options value="2">
+					<title xml:lang="ko">테두리 없음</title>
+				</options>
+			</var>
+			<var name="rd_nav_item" type="radio">
+				<title xml:lang="ko">본문 내비 프린트 버튼</title>
+				<description xml:lang="ko">본문 내비의 프린트 버튼의 표시 여부를 설정합니다.</description>
+				<options value="">
+					<title xml:lang="ko">표시(기본)</title>
+				</options>
+				<options value="N">
+					<title xml:lang="ko">표시 안함</title>
+				</options>
+			</var>
+			<var name="prev_next" type="radio">
+				<title xml:lang="ko">이전글-다음글</title>
+				<description xml:lang="ko">본문 하단의 링크, 키보드의 방향키 '←', '→' 을 사용하여 이전글, 다음글로 이동할 수 있습니다.</description>
+				<options value="">
+					<title xml:lang="ko">본문 하단 텍스트 링크+단축키 사용(기본)</title>
+				</options>
+				<options value="2">
+					<title xml:lang="ko">본문 내비 아이콘 버튼+단축키 사용</title>
+				</options>
+				<options value="N">
+					<title xml:lang="ko">사용 안함</title>
+				</options>
+			</var>
+			<var name="prev_next_cut_size" type="text">
+				<title xml:lang="ko">이전글-다음글 제목 글자수 제한</title>
+				<description xml:lang="ko">이전글-다음글의 글자수를 제한합니다. 기본값은 '40' 입니다.</description>
+			</var>
+			<var name="to_sns" type="radio">
+				<title xml:lang="ko">SNS로 보내기 버튼</title>
+				<options value="">
+					<title xml:lang="ko">작은 아이콘 + 하단 편집 영역(기본)</title>
+				</options>
+				<options value="2">
+					<title xml:lang="ko">작은 아이콘 + 상단</title>
+				</options>
+				<options value="3">
+					<title xml:lang="ko">큰 아이콘(본문 하단)</title>
+				</options>
+				<options value="4">
+					<title xml:lang="ko">커스텀 입력(본문 하단)</title>
+				</options>
+				<options value="N">
+					<title xml:lang="ko">표시 안함</title>
+				</options>
+			</var>
+			<var name="to_sns_small" type="radio">
+				<title xml:lang="ko">SNS 작은 버튼 텍스트 표시</title>
+				<description xml:lang="ko">위의 항목에서 '작은 아이콘' 사용 시에 아이콘 옆에 텍스트의 사용 여부를 설정합니다.</description>
+				<options value="">
+					<title xml:lang="ko">표시(기본)</title>
+				</options>
+				<options value="bubble">
+					<title xml:lang="ko">표시 안함</title>
+				</options>
+			</var>
+			<var name="to_sns_big" type="radio">
+				<title xml:lang="ko">SNS 큰 버튼 정렬</title>
+				<description xml:lang="ko">위의 항목에서 '큰 아이콘' 사용 시에 정렬을 설정합니다.</description>
+				<options value="">
+					<title xml:lang="ko">가운데(기본)</title>
+				</options>
+				<options value="left">
+					<title xml:lang="ko">왼쪽</title>
+				</options>
+				<options value="right">
+					<title xml:lang="ko">오른쪽</title>
+				</options>
+			</var>
+			<var name="rd_ft_nav" type="checkbox">
+				<title xml:lang="ko">본문 하단 메뉴 영역</title>
+				<options value="lst_btn">
+					<title xml:lang="ko">목록 버튼 표시</title>
+				</options>
+			</var>
+			<var name="fdb_style" type="radio">
+				<title xml:lang="ko">댓글 스타일</title>
+				<options value="">
+					<title xml:lang="ko">테두리 없는(기본)</title>
+				</options>
+				<options value="fdb_v2">
+					<title xml:lang="ko">테두리+네임택</title>
+				</options>
+			</var>
+			<var name="fdb_nav" type="radio">
+				<title xml:lang="ko">댓글 편집창 위치</title>
+				<options value="">
+					<title xml:lang="ko">댓글 상단 + 숨기고 마우스 오버시 표시(기본)</title>
+				</options>
+				<options value="fdb_nav_btm">
+					<title xml:lang="ko">댓글 하단 + 대댓글 버튼 표시</title>
+				</options>
+			</var>
+		</group>
+		<group>
+		<title xml:lang="ko">확장변수 설정</title>
+			<var name="et_var" type="radio">
+				<title xml:lang="ko">확장변수 위치</title>
+				<options value="">
+					<title xml:lang="ko">본문 안에(기본)</title>
+				</options>
+				<options value="1">
+					<title xml:lang="ko">제목 아래</title>
+				</options>
+				<options value="2">
+					<title xml:lang="ko">본문 하단</title>
+				</options>
+			</var>
+			<var name="etc_mid" type="text">
+				<title xml:lang="ko">★수정확장변수 mid</title>
+				<description xml:lang="ko">수정할 확장변수의 mid(게시판명)를 적어주세요.
+				</description>
+			</var>
+			<var name="etc_name" type="text">
+				<title xml:lang="ko">　┖ 수정할 확장변수 사용자 정의 이름</title>
+				<description xml:lang="ko">수정을 원하는 확장변수의 사용자 정의 이름을 적어주세요.</description>
+			</var>
+			<var name="f_name" type="text">
+				<title xml:lang="ko">　┖ 확장변수 전방 단위</title>
+				<description xml:lang="ko">확장변수값 앞에 붙는 단위를 적어주세요.(예 ; 월)</description>
+			</var>
+			<var name="b_name" type="text">
+				<title xml:lang="ko">　┖ 확장변수 후방 단위</title>
+				<description xml:lang="ko">확장변수값 뒤에 붙는 단위를 적어주세요.(예 ; 원)</description>
+			</var>
+			<var name="msg_1" type="text">
+				<title xml:lang="ko">　┖ 최저치 이하 메세지 1</title>
+				<description xml:lang="ko">입력값이 최저치 이하인 경우 메세지 1</description>
+			</var>
+			<var name="msg_2" type="text">
+				<title xml:lang="ko">　┖ 최저치 이하 메세지 2</title>
+				<description xml:lang="ko">입력값이 최저치 이하인 경우 메세지 2</description>
+			</var>
+			<var name="extra_mid" type="text">
+				<title xml:lang="ko">★Hidden 확장변수 mid</title>
+				<description xml:lang="ko">본문 확장변수 출력에서 Hidden을 원하는 mid(게시판명)를 적어주세요.
+				북마크형식의 경우는 아래 입력항목이름만 기입하면됩니다. 
+				</description>
+			</var>
+			<var name="extra_name1" type="text">
+				<title xml:lang="ko">　┖ Hidden 확장변수 입력항목이름1</title>
+				<description xml:lang="ko">Hidden을 원하는 확장변수의 입력항목1의 이름을 적어주세요.</description>
+			</var>
+			<var name="extra_name2" type="text">
+				<title xml:lang="ko">　┖ Hidden 확장변수 입력항목이름2</title>
+				<description xml:lang="ko">Hidden을 원하는 확장변수의 입력항목2의 이름을 적어주세요.</description>
+			</var>
+			<var name="extra_name3" type="text">
+				<title xml:lang="ko">　┖ Hidden 확장변수 입력항목이름3</title>
+				<description xml:lang="ko">Hidden을 원하는 확장변수의 입력항목3의 이름을 적어주세요.
+				* 관리자는 항상 보입니다.
+				* 확장변수 Hidden 설명 "http://moonhouse.co.kr/272940"
+				</description>
+			</var>
+			<var name="color_mid" type="text">
+				<title xml:lang="ko">★색상입히기 mid</title>
+				<description xml:lang="ko">색상입힐 확장변수의 mid(게시판명)를 적어주세요.
+				</description>
+			</var>
+			<var name="blue_n" type="text">
+				<title xml:lang="ko">　┖ Blue</title>
+				<description xml:lang="ko">Blue색상이 적용될 기본값을 적어주세요</description>
+			</var>
+			<var name="orange_n" type="text">
+				<title xml:lang="ko">　┖ Orange</title>
+				<description xml:lang="ko">Orange색상이 적용될 기본값을 적어주세요</description>
+			</var>
+			<var name="gray_n" type="text">
+				<title xml:lang="ko">　┖ Gray</title>
+				<description xml:lang="ko">Gray색상이 적용될 기본값을 적어주세요</description>
+			</var>
+			<var name="end_name" type="text">
+				<title xml:lang="ko">★종료출력 사용자 정의 이름</title>
+				<description xml:lang="ko">종료 출력을 원하는 확장변수의 사용자 정의 이름을 적어주세요(기본 end)</description>
+			</var>
+			<var name="end_title" type="text">
+				<title xml:lang="ko">　┖ 종료</title>
+				<description xml:lang="ko">종료 제목을 적어주세요(기본 종료)</description>
+			</var>
+			<var name="ing_title" type="text">
+				<title xml:lang="ko">　┖ 진행중</title>
+				<description xml:lang="ko">진행중 제목을 적어주세요(기본 없음)</description>
+			</var>
+			<var name="approach_title" type="text">
+				<title xml:lang="ko">　┖ 종료임박</title>
+				<description xml:lang="ko">종료임박 제목을 적어주세요(기본 종료임박)</description>
+			</var>
+			<var name="today_title" type="text">
+				<title xml:lang="ko">　┖ 오늘종료</title>
+				<description xml:lang="ko">오늘종료 제목을 적어주세요(기본 오늘종료)</description>
+			</var>
+			<var name="a_d" type="text">
+				<title xml:lang="ko">　┖ 종료임박 날수</title>
+				<description xml:lang="ko">종료임박 날 수를 적어주세요(기본 +1 day / 진행중 날 수와 동일 설정)</description>
+			</var>
+			<var name="i_d" type="text">
+				<title xml:lang="ko">　┖ 진행중 시작 날수</title>
+				<description xml:lang="ko">진행중 시작 날수를 적어주세요(기본 -1 days / 종료임박 날 수와 동일 설정)</description>
+			</var>
+			<var name="d_day" type="radio">
+				<title xml:lang="ko">D-Day출력(ft)</title>
+				<description xml:lang="ko">D-Day를 출력표시합니다.</description>
+				<options value="">
+					<title xml:lang="ko">표시 안함(기본)</title>
+				</options>
+				<options value="Y">
+					<title xml:lang="ko">표시</title>
+				</options>
+			</var>
+			<var name="d_day_title" type="text">
+				<title xml:lang="ko">　┖ D-Day</title>
+				<description xml:lang="ko">D-Day 제목을 적어주세요</description>
+			</var>
+			<var name="sticky_select" type="radio">
+				<title xml:lang="ko">목록(거래장형) 게시판 좌우 스크롤 기능 고정칼럼 선택</title>
+				<description xml:lang="ko">게시목록의 항목이 많아서 좌우 수평 스크롤, 스와이프 기능적용시 고정칼럼을 선택하는 항목
+				* https://moonhouse.co.kr/xetip/554284</description>
+				<options value="">
+					<title xml:lang="ko">적용안함(기본)</title>
+				</options>
+				<options value="e">
+					<title xml:lang="ko">확장변수</title>
+				</options>
+				<options value="t">
+					<title xml:lang="ko">제목</title>
+				</options>
+			</var>
+			<var name="sticky" type="text">
+				<title xml:lang="ko">　┖ 확장 변수 선택시 고정칼럼 적용 확장 변수 ID</title>
+				<description xml:lang="ko">게시목록 좌우 수평 스크롤, 스와이프 설정시 고정 변수 ID</description>
+			</var>
+			<var name="sticky_bcolor" type="text">
+				<title xml:lang="ko">　┖ 고정칼럼 배경색상</title>
+				<description xml:lang="ko">고정 확장변수칸 배경색상을 지정.(기본 #fff)</description>
+			</var>
+			<var name="subject_w_size" type="text">
+				<title xml:lang="ko">　┖ 제목칸 최소 넓이 지정</title>
+				<description xml:lang="ko">입력하지 않으면 기본 설정은 넓이 지정 하지 않습니다.(250px 가 적당 숫자만)</description>
+			</var>
+			<var name="eid_up1" type="text">
+				<title xml:lang="ko">게시판수정 확장 변수 ID One</title>
+				<description xml:lang="ko">게시판목록에서 확장변수를 직접 수정할수 있는 확장변수의 ID를 작성(기본 update)
+				* https://xetown.com/download/1666779 *https://moonhouse.co.kr/xetip/553814</description>
+			</var>
+			<var name="eid_up2" type="text">
+				<title xml:lang="ko">게시판수정 확장 변수 ID Two</title>
+				<description xml:lang="ko">게시판목록에서 확장변수를 직접 수정할수 있는 확장변수의 ID를 작성(기본 update1)</description>
+			</var>
+		</group>
+	</extra_vars>
+</skin>
