@@ -19,8 +19,8 @@
 	if(!$mi->img_insert_align) $mi->img_insert_align = 'center';
 	if(!$mi->top_toggle) $mi->top_toggle = 1;
 	if(!$mi->normal_lst_tdW) $mi->normal_lst_tdW = 90;
-	if(!$mi->eid_up1) $mi->eid_up1 = update;
-	if(!$mi->eid_up2) $mi->eid_up2 = update1;
+	if(!$mi->eid_up1) $mi->eid_up1 = 'update';
+	if(!$mi->eid_up2) $mi->eid_up2 = 'update1';
 
 	<!--// 체크박스 옵션 -->
 	$mi->btm_mn = unserialize($mi->btm_mn);
@@ -39,7 +39,7 @@
 	if($mi->custom_shadow) $mi->shadow = $mi->custom_shadow;
 	if(!$mi->color) $mi->color = 333333;
 	if(!$mi->color) $mi->shadow = '#999';
-	if($mi->colorset=='black') $mi->color = EEEEEE;
+	if($mi->colorset=='black') $mi->color = 'EEEEEE';
 	if($mi->colorset=='black') $mi->shadow = '#000';
 	if($mi->color=='87cefa') $mi->shadow = '#5f9ea0';<!--// 라이트스카이블루 -->
 	if($mi->color=='6495ed') $mi->shadow = '#4682b4';<!--// 콘플라워블루 -->
@@ -60,9 +60,9 @@
 
 	if(!$mi->write_buten) $mi->write_buten = $lang->cmd_write;<!--// 글쓰기 버턴 -->
 	if(!$mi->title_area) $mi->title_area = $lang->title;<!--// 제목칸 이름 변경 -->
-	if(!$mi->top_panel_bcolor) $mi->top_panel_bcolor = transparent;<!--// 판넬박스 배경색상 -->
+	if(!$mi->top_panel_bcolor) $mi->top_panel_bcolor = 'transparent';<!--// 판넬박스 배경색상 -->
 	if(!$mi->top_panel_color) $mi->top_panel_color = '#444';<!--// 판넬박스 배경색상 -->
-	if(!$mi->top_panel_btn) $mi->top_panel_btn = Click;<!--// 판넬박스 버턴문구 -->
+	if(!$mi->top_panel_btn) $mi->top_panel_btn = 'Click';<!--// 판넬박스 버턴문구 -->
 
 }
 
@@ -175,7 +175,7 @@
 {@ $mi->default_style = 'list'}
 <!--@end-->
 
-<!--@if(class_exists(Mobile) && Mobile::isFromMobilePhone())-->
+<!--@if(class_exists('Mobile') && Mobile::isFromMobilePhone())-->
 <load target="../../../../common/js/jquery.min.js" index="-100006" />
 <load target="../../../../common/js/xe.min.js" index="-100006" />
 <load target="../../../../common/js/x.min.js" index="-100006" />
@@ -184,7 +184,11 @@
 
 <!--%load_js_plugin("ui")-->
 <load target="css/board.css" />
+<load target="css/ie8.css" targetie="lt IE 9" />
 <load cond="$mi->colorset=='black'" target="css/black.css" />
+
+<!--// 커스텀 파일 넣기 -->
+<include cond="file_exists(_XE_PATH_.'modules/board/skins/sketchbook5/custom/custom.php')" target="custom/custom.php" />
 
 <style data-id="bdCss">
 .color_scheme_dark * { color:var(--color-black) !important; background-color:var(--color-white) !important;}
@@ -321,7 +325,7 @@
 <block cond="$mi->zine_style=='3' || $mi->zine_style=='4'">
 .bd_zine{margin:0 auto;padding:{$mi->zine_margin}px 0}
 .bd_zine li{width:{$mi->zine_thumb_width}px;margin:{$mi->zine_margin}px}
-.bd_zine .tmb_wrp .no_img{width:{$mi->zine_thumb_width-2}px;<!--@if($mi->thumbnail_type=='crop')-->height:{$mi->zine_thumb_width-2}px;line-height:{$mi->zine_thumb_width-2}px<!--@else-->height:120px;line-height:120px<!--@end-->;border:1px solid #DDD}
+.bd_zine .tmb_wrp .no_img{width:{$mi->zine_thumb_width-2}px;<!--@if($mi->thumbnail_type=='fill')-->height:{$mi->zine_thumb_width-2}px;line-height:{$mi->zine_thumb_width-2}px<!--@else-->height:120px;line-height:120px<!--@end-->;border:1px solid #DDD}
 <!--@if($mi->zine_thumb_width > 399)-->
 .bd_zine.card h3{font-size:15px}
 .bd_zine.card .cnt{margin-top:1.5em}
@@ -413,4 +417,4 @@
 </style>
 
 <!--// KaKao Map Api -->
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey={$mi->kakao_key}&libraries=services,clusterer"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey={$mi->kakao_key}&libraries=services,clusterer"></script>

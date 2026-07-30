@@ -1,6 +1,6 @@
 {@
-	if(!$mi->eid_up1) $mi->eid_up1 = update;
-	if(!$mi->eid_up2) $mi->eid_up2 = update1;
+	if(!$mi->eid_up1) $mi->eid_up1 = 'update';
+	if(!$mi->eid_up2) $mi->eid_up2 = 'update1';
 }
 
 <include cond="$notice_list && $mi->notice_style=='2'" target="_notice.html" />
@@ -77,11 +77,11 @@
 			<span style="font-size:0.8em; color:#888; margin:0 5px">
 			<!--// 종료 확장변수 설정 -->
 			{@
-				if(!$mi->end_name) $mi->end_name = end;
-				if(!$mi->end_title) $mi->end_title = 종료;
+				if(!$mi->end_name) $mi->end_name = 'end';
+				if(!$mi->end_title) $mi->end_title = '종료';
 				if(!$mi->ing_title) $mi->ing_title = '';
-				if(!$mi->approach_title) $mi->approach_title = 종료임박;
-				if(!$mi->today_title) $mi->today_title = 오늘종료;
+				if(!$mi->approach_title) $mi->approach_title = '종료임박';
+				if(!$mi->today_title) $mi->today_title = '오늘종료';
 				if(!$mi->a_d) $mi->a_d = '+1 day';
 				if(!$mi->i_d) $mi->i_d = '-1 days';
 
@@ -141,4 +141,4 @@
 			</h3>
 		</div>
 	</li>
-</ol>
+</ol>

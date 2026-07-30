@@ -191,7 +191,7 @@ var allowedFileTypes = '<!--@if($grant->manager)-->*.*<!--@else-->{$file_config-
 		</span>
 		<span class="itx_wrp">
 			<label for="homepage">{$lang->homepage}</label>
-            <input type="text" name="homepage" id="homepage" value="{htmlspecialchars($oDocument->get('homepage'))}" class="itx m_h" />
+            <input type="text" name="homepage" id="homepage" value="{escape($oDocument->get('homepage'), false)}" class="itx m_h" />
 		</span>
 		</block>
 	</div>

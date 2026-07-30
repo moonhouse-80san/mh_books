@@ -1,21 +1,16 @@
 <!--@if($order_type=="desc")-->
-{@
-$order_icon="down";
-$order_type="asc";
-}
-<!--@else-->
-{@
-$order_icon="up";
-$order_type="desc";
-}
+	{@ $order_icon="down"; $order_type="asc"; }
+	<!--@else-->
+	{@ $order_icon="up"; $order_type="desc"; }
 <!--@end-->
 
 {@
-	if(!$mi->eid_up1) $mi->eid_up1 = update;
-	if(!$mi->eid_up2) $mi->eid_up2 = update1;
+	if(!$mi->eid_up1) $mi->eid_up1 = 'update';
+	if(!$mi->eid_up2) $mi->eid_up2 = 'update1';
 }
 
 <p cond="!$document_list && !$notice_list" class="no_doc">{$lang->no_documents}</p>
+
 <div style="overflow-x: auto;">
 	<table cond="$document_list || $notice_list" class="bd_lst bd_tb_lst bd_tb">
 		<caption class="blind">List of Articles</caption>
@@ -93,27 +88,29 @@ $order_type="desc";
 				<td cond="!$mi->show_cate && $mi->use_category=='Y'" onclick="showUpdateExtraModal(this, {$document->document_srl}, {$document->get('category_srl')}, 'category')"|cond="$grant->manager && $use_category_update" class="cate"><span style="color:{$category_list[$document->get('category_srl')]->color}"|cond="$category_list[$document->get('category_srl')]->color!='transparent'">{$category_list[$document->get('category_srl')]->title}</span></td>
 				<td class="title <!--@if($mi->sticky_select == 't')-->t_fixed<!--@end-->" style="min-width:{$mi->subject_w_size}px;">
 					{@
-						if(!$mi->end_name) $mi->end_name = end;
-						if(!$mi->end_title) $mi->end_title = 종료;
+						if(!$mi->end_name) $mi->end_name = 'end';
+						if(!$mi->end_title) $mi->end_title = '종료';
 						if(!$mi->d_day_title) $mi->d_day_title = '';
 						if(!$mi->ing_title) $mi->ing_title = '';
-						if(!$mi->approach_title) $mi->approach_title = 종료임박;
-						if(!$mi->today_title) $mi->today_title = 오늘종료;
+						if(!$mi->approach_title) $mi->approach_title = '종료임박';
+						if(!$mi->today_title) $mi->today_title = '오늘종료';
 						if(!$mi->a_d) $mi->a_d = '+1 day';
 						if(!$mi->i_d) $mi->i_d = '-1 days';
 
 						$now = date("Y-m-d");
 						$date = $document->getExtraEidValueHTML($mi->end_name);
-						$this_day = date_create($document->getExtraEidValueHTML($mi->end_name));
-						$date1 = date("Y-m-d",strtotime($this_day->format("Y-m-d").($mi->i_d)));
-						$datetime = new DateTime("");
+						$this_day = $date ? date_create($date) : false;
+						$date1 = ($this_day instanceof DateTimeInterface)
+							? date("Y-m-d", strtotime($this_day->format("Y-m-d") . ($mi->i_d)))
+							: '';
+						$datetime = new DateTime();
 						$date2 = $datetime->modify($mi->a_d);
 
-						$w_d_day_text = str_replace('.', '-', $date);// D-day 날짜 설정
-						$w_d_day = strtotime($w_d_day_text);
-						$w_today = time();// 오늘 날짜 설정
-						$w_diff = $w_d_day - $w_today;// D-day와 오늘 날짜 차이 계산
-						$w_days = floor($w_diff / (60 * 60 * 24))+1;// 초를 일 수로 변환
+						$w_d_day_text = str_replace('.', '-', (string)$date); // D-day 날짜 설정
+						$w_d_day = $w_d_day_text ? strtotime($w_d_day_text) : false;
+						$w_today = time(); // 오늘 날짜 설정
+						$w_diff = ($w_d_day !== false) ? ($w_d_day - $w_today) : 0; // D-day와 오늘 날짜 차이 계산
+						$w_days = floor($w_diff / (60 * 60 * 24)) + 1; // 초를 일 수로 변환
 					}
 					<!--// 제목 -->
 					<!--@if(!$mi->preview || (@!in_array('tx',$mi->preview) && !$document->thumbnailExists()))-->

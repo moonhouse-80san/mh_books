@@ -34,7 +34,7 @@ jQuery(function($){
 <div cond="$mi->hd_tx=='2' && $oDocument->isExists()">{$mi->header_text}</div>
 <div cond="$mi->hd_tx=='3' && !$oDocument->isExists()">{$mi->header_text}</div>
 
-<div id="bd_{$mi->module_srl}_{$oDocument->document_srl}" class="bd {$_COOKIE['use_np']} {$mi->fdb_count}<!--@if(!$mi->hover)--> hover_effect<!--@end--><!--@if(!$mi->select_lst && ($mi->cnb || $mi->use_category!='Y'))--> small_lst_btn{$oDocument->isExists()}<!--@end--><!--@if($mi->select_lst_more)--> select_lst_cloud<!--@end-->" data-default_style="{$mi->default_style}" data-link_board="{$mi->link_board}"|cond="$mi->link_board" data-bdBubble="N"|cond="$mi->bubble=='N'" data-lstViewer="{$lang->with_viewer}"|cond="$mi->lst_viewer=='Y'" data-bdFilesType="{$mi->files_type}" data-bdImgOpt="Y"|cond="$mi->img_opt" data-bdImgLink="Y"|cond="!$mi->img_link && Mobile::isMobileCheckByAgent()" data-bdNavSide="N"|cond="$mi->rd_nav_side || $mi->default_style=='blog' || $mi->default_style=='guest'">
+<div id="bd_{$mi->module_srl}_{$oDocument->document_srl}" class="board_content bd {$_COOKIE['use_np']} {$mi->fdb_count}<!--@if(!$mi->hover)--> hover_effect<!--@end--><!--@if(!$mi->select_lst && ($mi->cnb || $mi->use_category!='Y'))--> small_lst_btn{$oDocument->isExists()}<!--@end--><!--@if($mi->select_lst_more)--> select_lst_cloud<!--@end-->" data-default_style="{$mi->default_style}" data-link_board="{$mi->link_board}"|cond="$mi->link_board" data-bdBubble="N"|cond="$mi->bubble=='N'" data-lstViewer="{$lang->with_viewer}"|cond="$mi->lst_viewer=='Y'" data-bdFilesType="{$mi->files_type}" data-bdImgOpt="Y"|cond="$mi->img_opt" data-bdImgLink="Y"|cond="!$mi->img_link && Mobile::isMobileCheckByAgent()" data-bdNavSide="N"|cond="$mi->rd_nav_side || $mi->default_style=='blog' || $mi->default_style=='guest'">
 
 <!--// Wizard -->
 <block cond="$grant->manager && $mi->wizard!='N' && !Mobile::isMobileCheckByAgent()">
@@ -92,7 +92,7 @@ jQuery(function($){
 				<ul class="bubble bg_f_f9 css3pie">
 					<li class="cnbMore"><a href="#" class="bubble" title="{$lang->category} {$lang->more}"><i class="fa<!--@if($mi->cnb_open)--> fa-caret-up<!--@else--> fa-caret-down<!--@end-->"></i></a></li>
 					<li loop="$cate_list=>$key,$val" class="on"|cond="$category==$val->category_srl">
-						<a class="a1<!--@if($category==$val->category_srl)--> on<!--@end-->" href="{getUrl(category,$val->category_srl,'document_srl','','page','')}" title="{$lang->document_count} {$val->document_count}"|cond="!$mi->cnb_count" style="color:{$val->color}"|cond="$val->color!='transparent'">{$val->title}<small cond="$mi->cnb_count">({$val->document_count})</small></a>
+						<a class="a1<!--@if(isset($category) && $category == $val->category_srl)--> on<!--@end-->"    href="{getUrl('category', $val->category_srl, 'document_srl', '', 'page', '')}"    title="{$lang->document_count} {$val->document_count}"|cond="!empty($mi->cnb_count)"    style="color:{$val->color}"|cond="!empty($val->color) && $val->color != 'transparent'">    {$val->title}<small cond="!empty($mi->cnb_count)">({$val->document_count})</small></a>
 						<ul cond="count($val->children)" class="wrp">
 							<li loop="$val->children=>$idx,$item" class="li2<!--@if($category==$item->category_srl)--> on<!--@end-->"><a href="{getUrl(category,$item->category_srl,'document_srl','','page','')}" title="{$lang->document_count} {$item->document_count}"|cond="!$mi->cnb_count" style="color:{$item->color}"|cond="$item->color!='transparent'">{$item->title}<small cond="$mi->cnb_count">({$item->document_count})</small></a></li>
 						</ul>
@@ -151,10 +151,17 @@ jQuery(function($){
 			</form>
 		</div>
 		<div class="fr">
-			<a cond="!$mi->write_btm_btn || ($mi->write_btm_btn!='N' && $grant->write_document)" class="btn_img" href="{getUrl('act','dispBoardWrite','document_srl','')}"><i class="ico_16px write"></i> {$mi->write_buten}</a>
+			<a cond="!$mi->write_btm_btn || ($mi->write_btm_btn!='N' && $grant->write_document)" class="btn_img" href="{getUrl('', 'mid', $mid, 'act', 'dispBoardWrite', 'category', $category ?? null)}"><i class="ico_16px write"></i> {$mi->write_buten}</a>
 			<block cond="$grant->manager">
-			<a class="btn_img" href="{getUrl('act','dispBoardAdminBoardInfo')}"><i class="ico_16px setup"></i> {$lang->cmd_setup}</a>
-			<a class="btn_img" href="{getUrl('','module','document','act','dispDocumentManageDocument')}" onclick="popopen(this.href,'manageDocument');return false"><i class="tx_ico_chk">✔</i> {$lang->cmd_manage_document}</a>
+				<a class="btn_img" href="{getUrl('act','dispBoardAdminBoardInfo')}"><i class="ico_16px setup"></i> {$lang->cmd_setup}</a>
+				<a class="btn_img" href="{getUrl('','module','document','act','dispDocumentManageDocument')}" onclick="popopen(this.href,'manageDocument');return false"><i class="tx_ico_chk">✔</i> {$lang->cmd_manage_document}</a>
+
+				<!--// 엑셀버턴 출력 https://xetown.com/download/1713367 모듈 설치 필수-->
+				{@
+					$excel_enable = getModel('excel') && !ExcelModel::getExcelGrantMessage('document', 'dispExcelGenerateBoard', $module_info->module_srl);
+					$excel_url = getFullUrl('', 'module', 'excel', 'act', 'dispExcelGenerateBoard');
+				}
+				<a cond="$excel_enable" class="btn_img" href="#" onclick="popopen('{$excel_url}'.setQuery('target_url', current_url), 'excelGenerate'); return false;">엑셀 저장</a>
 			</block>
 		</div>
 	</div>
@@ -203,26 +210,133 @@ jQuery(function($){
 </block>
 
 <script cond="Mobile::isMobileCheckByAgent()">
-jQuery(function($){
-if(getCookie('donotdragpage') == 'true'){
-$('.dragoff').hide();
-$('.dragon').show();
-}
-else {
-$('.dragon').hide();
-$('.dragoff').show();
-}
-$('.dragoff').click(function(){
-setCookie('donotdragpage', 'true', new Date(Date.now() + 1000000000000));
-$('.dragoff').remove();
-$('.dragon').show();
-location.reload();
-});
-$('.dragon').click(function(){
-setCookie('donotdragpage', 'true', new Date(Date.now() - 1));
-$('.dragon').remove();
-$('.dragoff').show();
-location.reload();
-});
-});
+	jQuery(function($){
+	if(getCookie('donotdragpage') == 'true'){
+	$('.dragoff').hide();
+	$('.dragon').show();
+	}
+	else {
+	$('.dragon').hide();
+	$('.dragoff').show();
+	}
+	$('.dragoff').click(function(){
+	setCookie('donotdragpage', 'true', new Date(Date.now() + 1000000000000));
+	$('.dragoff').remove();
+	$('.dragon').show();
+	location.reload();
+	});
+	$('.dragon').click(function(){
+	setCookie('donotdragpage', 'true', new Date(Date.now() - 1));
+	$('.dragon').remove();
+	$('.dragoff').show();
+	location.reload();
+	});
+	});
+</script>
+
+<!--// Table의 폭이 디바이스 및 화면 가로 사이즈보다 더 넓을 때 마우스 휠 좌우 스코롤 -->
+<script>
+	$(function() {
+	  // 각 테이블에 대해 개별적으로 타임아웃 처리
+	  $('.bd_lst, .tg').each(function() {
+		const $table = $(this);
+		const $tableWrapper = $table.parent();
+		let hoverTimer = null;
+		let isScrollEnabled = false;
+
+		function canScroll(wrapper) {
+		  return wrapper[0].scrollWidth > wrapper.width();
+		}
+
+		$table.on('mouseenter', function() {
+		  // 이전 타이머 초기화
+		  if (hoverTimer) {
+			clearTimeout(hoverTimer);
+		  }
+
+		  // 1초 후 스크롤 기능 활성화
+		  hoverTimer = setTimeout(function() {
+			if (canScroll($tableWrapper)) {
+			  isScrollEnabled = true;
+			  $tableWrapper.css('cursor', 'grab');
+			}
+		  }, 1000);
+		});
+
+		$table.on('mouseleave', function() {
+		  // 마우스를 벗어나면 타이머 초기화
+		  if (hoverTimer) {
+			clearTimeout(hoverTimer);
+		  }
+		  
+		  // 스크롤 기능 비활성화
+		  isScrollEnabled = false;
+		  $tableWrapper.css('cursor', 'default');
+		});
+
+		// 휠 이벤트 처리
+		$tableWrapper.on('wheel', function(event) {
+		  if (isScrollEnabled && canScroll($(this))) {
+			event.preventDefault();
+			const delta = event.originalEvent.deltaY;
+			$(this).scrollLeft($(this).scrollLeft() + delta);
+		  }
+		});
+
+		// 터치 이벤트 처리
+		let touchStartX = 0;
+		let scrollStartX = 0;
+
+		$tableWrapper.on('touchstart', function(event) {
+		  if (!isScrollEnabled || !canScroll($(this))) return;
+		  
+		  touchStartX = event.originalEvent.touches[0].clientX;
+		  scrollStartX = $(this).scrollLeft();
+		});
+
+		$tableWrapper.on('touchmove', function(event) {
+		  if (!isScrollEnabled || !canScroll($(this))) return;
+		  
+		  event.preventDefault();
+		  const touchCurrentX = event.originalEvent.touches[0].clientX;
+		  const touchDeltaX = touchStartX - touchCurrentX;
+		  $(this).scrollLeft(scrollStartX + touchDeltaX);
+		});
+
+		// 스크롤 인디케이터 설정
+		function setupScrollIndicator() {
+		  const $scrollIndicator = $('<div class="scroll-indicator">').css({
+			'position': 'absolute',
+			'bottom': '0',
+			'left': '0',
+			'width': '0',
+			'height': '3px',
+			'background': 'rgba(0,0,0,0.3)',
+			'transition': 'width 0.2s',
+			'pointer-events': 'none',
+			'display': 'none'
+		  });
+
+		  $tableWrapper.css('position', 'relative').append($scrollIndicator);
+
+		  function updateScrollIndicator() {
+			if (isScrollEnabled && canScroll($tableWrapper)) {
+			  const scrollPercentage = ($tableWrapper.scrollLeft() / 
+				($tableWrapper[0].scrollWidth - $tableWrapper.width())) * 100;
+			  $scrollIndicator.css({
+				'width': scrollPercentage + '%',
+				'display': 'block'
+			  });
+			} else {
+			  $scrollIndicator.hide();
+			}
+		  }
+
+		  $tableWrapper.on('scroll', updateScrollIndicator);
+		  $(window).on('resize', updateScrollIndicator);
+		}
+
+		setupScrollIndicator();
+	  });
+	});
 </script>
